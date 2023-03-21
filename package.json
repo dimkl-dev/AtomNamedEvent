@@ -1,0 +1,22 @@
+{
+  "name": "atomnamedevent",
+  "version": "1.0.0",
+  "description": "Объект и генерация события для браузера",
+  "main": "atomnamedevent.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "packk": "browserify ./atomnamedevent.js -o ./pack.js -d"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "/home/dimkl/mark/node/packages/AtomNamedEvent/"
+  },
+  "keywords": [
+    "js",
+    "event",
+    "browser"
+  ],
+  "author": "DIMKL",
+  "license": "ISC"
+}
