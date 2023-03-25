@@ -13,7 +13,7 @@ if (
     var _this = this;
     _this.name = pname;
   var mthis = (pname instanceof Event) ? pname : new CustomEvent(pname);
-  
+
   mthis._this = this;
   this.mthis = mthis;
   var _this = this;
@@ -27,6 +27,10 @@ if (
 };
 
 //AtomNamedEvent.prototype.say = function(){console.log(this.name)}
+
+
+
+
 
 function AtomNamedEvent(pname, target=AtomNamedEvent.prototype.target){
  //   this.init(pname);

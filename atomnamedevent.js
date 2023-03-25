@@ -1,47 +1,58 @@
-
-
+// Add your code here
 AtomNamedEvent.prototype.target = new EventTarget();
-
-AtomNamedEvent.prototype.addListener = function(func){
-   
-    if ((typeof func) == 'function') {
-        this.target.addEventListener(this.name, func);
-    } else {
-        throw (new SyntaxError('ERROR: AtomNamedEvent.prototype.addListener - func is not function\n' + func));
+AtomNamedEvent.prototype.func = {};
+AtomNamedEvent.prototype.func.addListener = function(func){
+    var mthis = "_this" in this ? this : this.mthis;
+    var _this = "mthis" in this ? this : this._this;
+    //debugger;
+    _this.target.addEventListener(mthis.type, func)
+    /* this._this.target.addEventListener(this.type, func) */
     };
+AtomNamedEvent.prototype.func.dispatchEvent = function(){
+    var mthis = "_this" in this ? this : this.mthis;
+    var _this = "mthis" in this ? this : this._this;
+    _this.target.dispatchEvent(mthis)
+    /* this._this.target.dispatchEvent(this) */
 };
-AtomNamedEvent.prototype.dispatchEvent = function(){
-    this.target.dispatchEvent(this.ev);
-}
 
-AtomNamedEvent.prototype.on = AtomNamedEvent.prototype.addEventListener;
-AtomNamedEvent.prototype.emit = AtomNamedEvent.prototype.dispatchEvent;
+AtomNamedEvent.prototype.func.on = AtomNamedEvent.prototype.func.addListener;
+AtomNamedEvent.prototype.func.emit = AtomNamedEvent.prototype.func.dispatchEvent;
 
 
+AtomNamedEvent.prototype.init = function(pname, target){
+  //var mthis = new CustomEvent(pname);
+if (
+(this.target !== target)&&(target instanceof EventTarget)
+){this.target = target};
 
-function AtomNamedEvent(pname){
-    var _name = pname;
-    var _ev = new CustomEvent(_name);
     var _this = this;
-    _ev.this = this;
-    var _origEvent = _ev;
-    Object.defineProperty(this, 'name', {get(){return _ev.type}});
-    //Object.assign(this, {get name(){return _ev.type}});  //--неработает как надо!!! Значение получается статичным. неизменным.
-    Object.defineProperty(this, "ev", {get(){return _ev}, 
-                                        set(pval){
-                             //-------start set ev-------
-                             if ('type' in pval) {
-                                _ev = pval;
-                                _ev.this = _this;
-                            } else {
-                                throw (new SyntaxError('set ev(pval): val is not Event \n' + pval))
-                            };
-                      //-------end set ev-------
+    _this.name = pname;
+  var mthis = (pname instanceof Event) ? pname : new CustomEvent(pname);
 
-                                        }});
-   
-   
+  mthis._this = this;
+  this.mthis = mthis;
+  var _this = this;
+  ;
+  /*mthis.addListener = this.addListener;
+  mthis.dispatchEvent = this.dispatchEvent;*/
+  Object.assign(mthis, _this.func);
+  
+  return mthis;
+  
+};
 
+//AtomNamedEvent.prototype.say = function(){console.log(this.name)}
+
+
+
+
+
+function AtomNamedEvent(pname, target=AtomNamedEvent.prototype.target){
+ //   this.init(pname);
+ 
+  var mthis = this.init(pname, target);
+  //console.dir(arguments);
+  return mthis;
 }
 
 module.exports.AtomNamedEvent = AtomNamedEvent;
@@ -55,16 +66,17 @@ console.groupEnd();}
 
 
 
-/*
+//AtomNamedEvent.prototype.constructor = AtomNamedEvent.prototype.init;
 
-var ane = new AtomNamedEvent('tt'); var origev = ane.ev;
-ane.ev = (new CustomEvent('vv'));
-//ane.addListener(console.dir);
-ane.addListener(ev => console.log(ev.this.hari, ev.type));
-ane.hari = 'haribol';
-ane.dispatchEvent();
-ane.ev = origev;
-ane.addListener(ev => console.log(ev.this.hari, ev.type));
-ane.dispatchEvent();
+//var obj = new AtomNamedEvent("gg");
+//var obj1 = new AtomNamedEvent("gg", (new EventTarget()));
+//
+//
+//obj.addListener((ev)=>{console.log(ev._this.name)});
+//
+//obj1.addListener(()=>{console.log("hari")});
+///*obj._this.target.addEventListener(obj.type, (ev)=>{console.log(ev._this.name)});*/
+//obj.dispatchEvent();
+//obj1.dispatchEvent();
+////console.log(obj instanceof Event)
 
-//console.dir(module);*/
