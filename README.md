@@ -6,26 +6,31 @@ version 1.1.0<br></br>
  <P>Версия 1.0 возврощала объект где объект события представлял из себя отдельное свойство.
     
    
- ## Свойства и методы
+ ##<span id="svm"> Свойства и методы</span>
  
-   *constructor(name[String|Event], [target=EventTarget]) 
- <pre>
-      *name имя события объекта для <i>CustomEvent</i> или экземпляр объекта базирующийся на объекте <i>Event</i>
-      *target - опциональный парамет позволяющий задать для объекта события экземпляр объекта <i>EventTarget</i> 
-   </pre>
-   возвращает и устанавливает объект события
+ ### constructor(name=(String|Event), [target=EventTarget]) 
+ - **name** -  имя  для объекта события типа **CustomEvent** или экземпляр объекта базирующийся на объекте **Event**. 
 
- ## AtomNamedEvent.prototype
-    *target - Объект EventTarget
-    *addListener(func) - подписывает функцию func на срабатывание события
-    *dispatchEvent - генерирует событие
-    *on - псевдоним для addListener
-    *emit - псевдоним для dispatchEvent
+ - **target** - опциональный парамет позволяющий задать отдельный  экземпляр объекта **EventTarget**. По умолчанию
+ используется экземпляр находящийся в *AtomNamedEvent.prototype.target*. с помощю него происходит вызов событий  и назначаются обработчики событий
+  
+Возвращает и устанавливает объект события
 
-  # USAGE:
-<pre><code>
+ ### AtomNamedEvent.prototype
+ <div style="line-height: 15pt">
+
+- **target** - Объект EventTarget
+- **addListener**(*listener*) - подписывает функцию listener на срабатывание события
+- **removeListener**(*listener*) - удаляет listener из обработчиков события.
+- **dispatchEvent**() - генерирует событие
+- **on**() - псевдоним для addListener
+- **emit**() - псевдоним для dispatchEvent
+</div>
+
+## USAGE:
+<pre>
    var { AtomNamedEvent } = require('atomnamedevent');
    var ane = new AtomNamedEvent("hari");
    ane.addListener(ev => console.log(ane === ev));
    ane.dispatchEvent(); 
-</code></pre>   
+ </pre>   
