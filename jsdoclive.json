@@ -1,5 +1,5 @@
 {
 
- "last_args" : " README.md -c ./conf.json"
+ "last_args" : " README.md -c ./conf.json  --tutorials ./docs"
  
 }
