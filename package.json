@@ -1,22 +1,30 @@
 {
   "name": "atomnamedevent",
   "version": "1.1.0",
-  "description": "Объект и генерация события для браузера",
+  "description": "Кроссбплатформенная реализация объекта и генерация событий в единой объектной форме с возможностью прототипного наследования.",
   "main": "atomnamedevent.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "packk": "browserify ./atomnamedevent.js -o ./pack.js -d"
+    "test": "echo \"Error: no test specified\" && exit 1"
     
   },
   "repository": {
-    "type": "git",
-    "url": "/home/dimkl/mark/node/packages/AtomNamedEvent/"
+    "type": "git ",
+    "url": "git+https://github.com/dimkl-dev/AtomNamedEvent.git/"
   },
   "keywords": [
     "js",
     "event",
-    "browser"
+    "browser",
+    "nodejs",
+    "OOP",
+    "Event",
+    "EventTarget",
+    "interface"
   ],
   "author": "DIMKL",
-  "license": "ISC"
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/dimkl-dev/AtomNamedEvent/issues"
+  },
+  "homepage": "https://github.com/dimkl-dev/AtomNamedEvent#readme"
 }
