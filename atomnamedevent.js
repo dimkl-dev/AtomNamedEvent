@@ -19,6 +19,7 @@ AtomNamedEvent.prototype.emit = AtomNamedEvent.prototype.dispatchEvent;
 
 
 
+
 function AtomNamedEvent(pname){
     var _name = pname;
     var _ev = new CustomEvent(_name);
