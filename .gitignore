@@ -1,6 +1,2 @@
-.
-..
-!atomnamedevent.js
-!package.json
-!README.md
-!pack.js
+out
+node_modules
