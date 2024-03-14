@@ -1,5 +1,5 @@
 # AtomNamedEvent
-version 1.1.0<br></br>
+version 1.1.2<br></br>
  Event + EventTarget<br>
 
  ## Обзор
