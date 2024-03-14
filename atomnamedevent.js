@@ -1,28 +1,36 @@
 // Add your code here
+
+/**
+ * @module atomnamedevent
+ */
+//----------------Start Event-----------------
 /**
  * @class Event
+ * @alias Event
  * @param {String} type - тип соботия. По сути имя события. В документации **mozilla** это параметр носит имя **typeArg**
- * @classdesc Базовый класс.  Экземпляры этого класса и есть сами объекты событий. 
- * Переменные этого типа, с дополнительными примясями, возврощаяются конструктором класса {@link AtomNamedEvent}.
+ * @classdesc Базовый класс.  Экземпляры этого класса и есть сами объекты событий.
+ * Переменные этого типа, с дополнительными примясями, возврощаяются конструктором класса [AtomNamedEvent]{@link module:atomnamedevent~AtomNamedEvent}.
  * Класс является встроенным в сам язык как **web** версии, так и его серверной реализации **nodeJS**.
- * Для больших подробностей по работе с этим интерфейсом смотрите 
- * докоментацию  [mozilla]{@link https://developer.mozilla.org/ru/docs/Web/API/Event/Event} 
- * или документацию [node js]{@link https://nodejs.org/docs/latest/api/events.html#class-event} если используете пакет на сервере. 
+ * Для больших подробностей по работе с этим интерфейсом смотрите
+ * докоментацию  [mozilla]{@link https://developer.mozilla.org/ru/docs/Web/API/Event/Event}
+ * или документацию [node js]{@link https://nodejs.org/docs/latest/api/events.html#class-event} если используете пакет на сервере.
  * Здесь приведён только самый необходимый минимум информации о классе, только та которая используется в коде.
  */
+//----------------End  Event-----------------
 
 
 
-
-
+//----------------Start EventTarget-----------------
 /**
  * @class EventTarget
+ * @alias EventTarget
+
  * @interface EventTarget
- * @classdesc Базовый класс. Функциональность класса {@link AtomNamedEvent} по рабате с событиями основана на нём.  
- * Описание класса приведено ради справки. Класс является встроенным в сам язык как **web** версии, 
+ * @classdesc Базовый класс. Функциональность класса [AtomNamedEvent]{@link module:atomnamedevent~AtomNamedEvent} по рабате с событиями основана на нём.
+ * Описание класса приведено ради справки. Класс является встроенным в сам язык как **web** версии,
  * так и его серверной реализации **nodeJS**.
- * Для больших подробностей по работе с этим интерфейсом смотрите 
- * докоментацию  [mozilla]{@link https://developer.mozilla.org/ru/docs/Web/API/EventTarget/EventTarget} 
+ * Для больших подробностей по работе с этим интерфейсом смотрите
+ * докоментацию  [mozilla]{@link https://developer.mozilla.org/ru/docs/Web/API/EventTarget/EventTarget}
  * или документацию [node js]{@link https://nodejs.org/docs/latest/api/events.html#class-eventtarget} если используете пакет на сервере.
  * Является свойством конструктора определённои в прототипе.
 
@@ -35,70 +43,84 @@
 
 
 /**
- * @function EventTarget#addEventListener
+ * @function addEventListener
  * @param {String} type - в коде ниже используется как имя события
  * @param {Function} listener - обработчик события
- * @param {any} [...args] - остальные параметры. Подробности смотри в полной документации к функции.
+ * @param {...any} [args] - остальные параметры. Подробности смотри в полной документации к функции.
+ * @memberof module:atomnamedevent~EventTarget
+ * @instance
  * @description добовляет обработчик события. Подробности смотри по ссылкам ниже.<br>
  * [web реализация]{@link https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener}  и
  * [серверная реализация]{@link https://nodejs.org/docs/latest/api/events.html#eventtargetaddeventlistenertype-listener-options}
- * 
+ *
  */
 
 /**
- * @function EventTarget#removeEventListener
+ * @function removeEventListener
  * @param {String} type - в коде ниже используется как имя события
- * @param {Function} listener - обработчик события 
- * @param {any} [...args] - остальные параметры. Подробности смотри в полной документации к функции.
+ * @param {Function} listener - обработчик события
+ * @param {...any} [args] - остальные параметры. Подробности смотри в полной документации к функции.
+ * @memberof module:atomnamedevent~EventTarget
+ * @instance
  * @description удаляет обработчик события. Подробности смотри по ссылкам ниже.<br>
  * [web реализация]{@link https://developer.mozilla.org/ru/docs/Web/API/EventTarget/removeEventListener}  и
  * [серверная реализация]{@link https://nodejs.org/docs/latest/api/events.html#eventtargetremoveeventlistenertype-listener-options}
- * 
+ *
  */
 
 /**
- * @function EventTarget.prototype.dispatchEvent
- * @param {Event} event - сам объект события
+ * @function dispatchEvent
+ * @param {module:atomnamedevent~Event} event - сам объект события
+ * @memberof module:atomnamedevent~EventTarget
+ * @instance
  * @description Генерирует события. Подробности смотри по ссылкам ниже.<br>
  * [web реализация]{@link https://developer.mozilla.org/ru/docs/Web/API/EventTarget/dispatchEvent}  и
  * [серверная реализация]{@link https://nodejs.org/docs/latest/api/events.html#eventtargetdispatcheventevent}
- * 
+ *
  */
+
+//----------------End EventTarget-----------------
+
 /**
- 
- * @type {EventTarget} */
+
+ * @type {module:atomnamedevent~EventTarget}
+ * @description доступна как **AtomNamedEvent.prototype.target** */
 
 AtomNamedEvent.prototype.target = new EventTarget();
 
 
-
+//----------------Start eventFunc-----------------
 /**
  * _@class eventFunc
  * _@hideconstructor
  * @mixin eventFunc
+ *
 
- * @memberof AtomNamedEvent 
+ * @memberof module:atomnamedevent~AtomNamedEvent
  * @description  Cодержит методы которые используются всеми экземплярами.
  *  Нужен для удобства использования.
- 
+
  */
 
 /**
- * @type {AtomNamedEvent.eventFunc}
- * @memberof AtomNamedEvent
+ * @type {module:atomnamedevent~AtomNamedEvent.eventFunc}
+ * @memberof module:atomnamedevent~AtomNamedEvent
+ * @alias func
  * @description Доступна как  ***{@link AtomNamedEvent.prototype.func}***
  * Добавлена для удобства. Содержит функции которые используется всеми экземплярами класса {@link AtomNamedEvent}
  */
 AtomNamedEvent.prototype.func = {};
 
+//-----Определение функций-----
 /**
- * @function AtomNamedEvent.eventFunc.addListener
+ * @function addListener
  * @param {Function} listener - **callback** функция которая будет вызвана в результате срабатывания событитя.
- * @param {any} [...args] - значение параметра смотри в описание функции {@link EventTarget#addEventListener}
- * @description Региструет обработчик события для экземпляра объекта {@link AtomNamedEvent}.
- * Является абстракцией над функцией {@link EventTarget#addEventListener} избавляя от потребности вводить 
- * строковое имя события. Достаточно только передать в качеств параметра функцию - которая будет обработчиком события. 
- * 
+ * @param {...any} [args] - значение параметра смотри в описание функции [EventTarget#addEventListener]{@link module:atomnamedevent~EventTarget#addEventListener}
+ * @memberof module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @description Региструет обработчик события для экземпляра объекта {@link module:atomnamedevent~AtomNamedEvent}.
+ * Является абстракцией над функцией [EventTarget#addEventListener]{@link module:atomnamedevent~EventTarget#addEventListener} избавляя от потребности вводить
+ * строковое имя события. Достаточно только передать в качеств параметра функцию - которая будет обработчиком события.
+ *
  */
 AtomNamedEvent.prototype.func.addListener = function(func, ...args){
     var mthis = "_this" in this ? this : this.mthis;//_this только интепрфейса
@@ -109,13 +131,14 @@ AtomNamedEvent.prototype.func.addListener = function(func, ...args){
 };
 
 /**
- * @function AtomNamedEvent.eventFunc.removeListener
+ * @function removeListener
  * @param {Function} listener - **callback** функция которая будет удалена из обработчиков событитя.
- * @param {any} [...args] - значение параметра смотри в описание функции {@link EventTarget#removeEventListener}
- * @description Удаляет обработчик события для экземпляра объекта {@link AtomNamedEvent}.
- * Является абстракцией над функцией {@link EventTarget#removeEventListener} избавляя от потребности вводить 
- * строковое имя события. Достаточно только передать в качеств параметра функцию - которая будет удалена из обработчиков события. 
- * 
+ * @param {...any} [args] - значение параметра смотри в описание функции [EventTarget#removeEventListener]{@link module:atomnamedevent~EventTarget#removeEventListener}
+ * @memberof module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @description Удаляет обработчик события для экземпляра объекта {@link module:atomnamedevent~AtomNamedEvent}.
+ * Является абстракцией над функцией [EventTarget#removeEventListener]{@link module:atomnamedevent~EventTarget#removeEventListener} избавляя от потребности вводить
+ * строковое имя события. Достаточно только передать в качеств параметра функцию - которая будет удалена из обработчиков события.
+ *
  */
 AtomNamedEvent.prototype.func.removeListener = function(func, ...args){
   var mthis = "_this" in this ? this : this.mthis;//_this только интепрфейса
@@ -126,12 +149,13 @@ AtomNamedEvent.prototype.func.removeListener = function(func, ...args){
 };
 
 /**
- * @function AtomNamedEvent.eventFunc.dispatchEvent
- * @description Генерирует событие. Экземпляры объекта {@link AtomNamedEvent} являются событиями 
+ * @function dispatchEvent
+ * @memberof module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @description Генерирует событие. Экземпляры объекта {@link module:atomnamedevent~AtomNamedEvent} являются событиями
  * с дополнительными примесями. Этот методо генерирует это событие.
- * Является абстракцией над функцией {@link EventTarget#dispatchEvent} избавляя от потребности передовать 
+ * Является абстракцией над функцией [EventTarget#dispatchEvent]{@link module:atomnamedevent~EventTarget#dispatchEvent} избавляя от потребности передовать
  * в виде параметра объект события.
- * 
+ *
  */
 AtomNamedEvent.prototype.func.dispatchEvent = function(){
     var mthis = "_this" in this ? this : this.mthis;//_this только интепрфейса
@@ -141,30 +165,32 @@ AtomNamedEvent.prototype.func.dispatchEvent = function(){
 };
 
 /**
- * @function AtomNamedEvent.eventFunc.on
- * @description псевдоним для {@link AtomNamedEvent.eventFunc.addListener
+ * @function on
+ * @memberof module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @description псевдоним для {@link module:atomnamedevent~AtomNamedEvent.eventFunc.addListener
  * }
  */
 AtomNamedEvent.prototype.func.on = AtomNamedEvent.prototype.func.addListener;
 /**
- * @function AtomNamedEvent.eventFunc.emmit
- * @description псевдоним для {@link AtomNamedEvent.eventFunc.dispatchEvent}
+ * @function emmit
+ * @memberof module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @description псевдоним для {@link module:atomnamedevent~AtomNamedEvent.eventFunc.dispatchEvent}
  */
 AtomNamedEvent.prototype.func.emmit = AtomNamedEvent.prototype.func.dispatchEvent;
 
+//----------------End eventFunc-----------------
+
 /**
- * @alias AtomNamedEvent.init
- * @param {String | Event} pname  - имя события(тип {@link Event}), или  объект события. 
- * @param {EventTarget} target - интервейс для работы с событиями. 
- * Именно он вызывает, определяет, и удоляет слушателей событий 
- * @instance
- * @static
- * @memberof AtomNamedEvent
- * @returns {AtomNamedEvent#OuterInterface}
+ * @function init
+ * @param {String | module:atomnamedevent~Event} pname  - имя события(тип {@link Event}), или  объект события.
+ * @param {module:atomnamedevent~EventTarget} target - интервейс для работы с событиями.
+ * Именно он вызывает, определяет, и удоляет слушателей событий
+ * @memberof module:atomnamedevent~AtomNamedEvent
+ * @returns {module:atomnamedevent~AtomNamedEvent#OuterInterface}
 
 
  * @description  Это функци возврощает объект - который будет возвращён конструктором
- * класса {@link AtomNamedEvent}. Она коректно сработая только в контексте этого класса, или
+ * класса {@link module:atomnamedevent~AtomNamedEvent}. Она коректно сработает только в контексте этого класса, или
  * класса который наследуется от него. Использование вне контекста этого класса - вызовет ошибку.
  * Значение параметров передаются от параметров конструктора.
  */
@@ -190,45 +216,48 @@ if (
 
 
   //assign - объединение объектов.
-  Object.assign(mthis, _this.func); 
-  
+  Object.assign(mthis, _this.func);
+
   return mthis;
-  
+
 };
 
 //AtomNamedEvent.prototype.say = function(){console.log(this.name)}
 
 
-
+//----------------Start AtomNamedEvent-----------------
 /**
  * @class AtomNamedEvent
- * @param {(String|Event)} pname - имя события(тип {@link Event}), или  объект события. 
- * @param {EventTarget} [target={@link AtomNamedEvent.prototype.target}] - интервейс для работы с событиями. 
+
+
+ * @param {(String|module:atomnamedevent~Event)} pname - имя события(тип {@link Event}), или  объект события.
+ * @param {module:atomnamedevent~EventTarget} [target={@link AtomNamedEvent.prototype.target}] - интервейс для работы с событиями.
  * Именно он вызывает, определяет, и удоляет слушателей событий
- * @description 
- * @returns {AtomNamedEvent#OuterInterface} - возврощает переменную {@link AtomNamedEvent#mthis}
- 
+ * @description
+ * @returns {module:atomnamedevent~AtomNamedEvent#OuterInterface} - возврощает переменную {@link module:atomnamedevent~AtomNamedEvent#mthis}
+
  */
 
 function AtomNamedEvent(pname, target=AtomNamedEvent.prototype.target){
  //   this.init(pname);
- 
+
 
 /**
- * @type {AtomNamedEvent#OuterInterface}
- * @description Переменная будет возвращена конструктором. Контекст конструктора сохраняется 
- * в одном из свойств (**_this**). Переменная является внешним интерфейсом для работы с классом. 
- * Всё что определено в контексте класса {@link AtomNamedEvent} через **this** по сути является защищёнными
+ * @type {module:atomnamedevent~AtomNamedEvent#OuterInterface}
+ * @description Переменная будет возвращена конструктором. Контекст конструктора сохраняется
+ * в одном из свойств (**_this**). Переменная является внешним интерфейсом для работы с классом.
+ * Всё что определено в контексте класса [AtomNamedEvent]{@link module:atomnamedevent~AtomNamedEvent} через **this** по сути является защищёнными
  * полями(не доступные за пределами класса, но доступны тем классам которые от него наследуются)
- * Функция {@link AtomNamedEvent.init} помимо того что функция инициализирует экземпляр, 
+ * Функция [AtomNamedEvent.init]{@link module:atomnamedevent~AtomNamedEvent.init} помимо того что функция инициализирует экземпляр,
  * очень важную взаимосвязь следующего вида<br>
  * <pre>
  *    mthis._this = this;
  *    this.mthis = mthis;
  * </pre>
- * Взаимосвязь описанная выше - и является основой для реализации внешнего интерфейса и 
+ * Взаимосвязь описанная выше - и является основой для реализации внешнего интерфейса и
  * реализации защищённызх переменнных.
- * @alias AtomNamedEvent#mthis
+ * @memberof module:atomnamedevent~AtomNamedEvent
+ * @instance
  * @readonly
  */
   var mthis = this.init(pname, target);
@@ -238,23 +267,24 @@ function AtomNamedEvent(pname, target=AtomNamedEvent.prototype.target){
 }
 
 /**
- * @typedef {Event} AtomNamedEvent#OuterInterface
- * @mixes AtomNamedEvent.eventFunc
- * @property {AtomNamedEvent} _this - **READONLY**. Свойство потребное для работы методов класса {@link AtomNamedEvent}.
- * Сохроняеят контекст экземпляра класса. 
+ * @typedef {module:atomnamedevent~Event} module:atomnamedevent~AtomNamedEvent#OuterInterface
+
+ * @mixes module:atomnamedevent~AtomNamedEvent.eventFunc
+ * @property {module:atomnamedevent~AtomNamedEvent} _this - **READONLY**. Свойство потребное для работы методов класса {@link module:atomnamedevent~AtomNamedEvent}.
+ * Сохроняеят контекст экземпляра класса.
  * @description Этот тип данных позволяет реализовывать концепцию внешнего интерфейса и защищённых переменных.
- * Переменна этого типа возвращается конструктором {@link AtomNamedEvent}, которая создаётся функцией 
- * {@link AtomNamedEvent.init }
- * 
- * 
+ * Переменна этого типа возвращается конструктором {@link module:atomnamedevent~AtomNamedEvent}, которая создаётся функцией
+ * {@link module:atomnamedevent~AtomNamedEvent.init }
+ *
+ *
  */
+//----------------End AtomNamedEvent-----------------
 
-
-
+/**Экспорт класса */
 module.exports.AtomNamedEvent = AtomNamedEvent;
 
 //export to window
-try {Object.assign(window, module.exports)}catch(e){ 
+try {Object.assign(window, module.exports)}catch(e){
 console.groupCollapsed('%cW', 'color: red');
 console.error(e);
 console.groupEnd();}
